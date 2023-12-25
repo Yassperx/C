@@ -1,12 +1,24 @@
 #include <stdio.h>
+#define BACKSPACE '\b'
+#define TAB       '\t'
+#define NEWLINE   '\n'
 
 int main(void)
 {
   char c;
-  long count = 0;
   while ((c = getchar()) != EOF)
   {
-    ++count;
-    printf("%ld\n", count);
+    if (c == BACKSPACE) {
+      putchar('\\');
+      putchar('b');
+    } else if (c == TAB) {      
+      putchar('\\');
+      putchar('t');
+    } else if (c == NEWLINE) {      
+      putchar('\\');
+      putchar('n');
+    } else {
+      putchar(c);
+    }
   }
 }
