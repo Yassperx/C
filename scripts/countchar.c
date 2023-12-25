@@ -20,5 +20,6 @@ int main(void)
     } else {
       putchar(c);
     }
+    printf("\n");
   }
 }
