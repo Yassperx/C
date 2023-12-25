@@ -6,7 +6,6 @@ int main(void)
   long count = 0;
   while ((c = getchar()) != EOF)
   {
-    putchar(c);
     ++count;
     printf("%ld\n", count);
   }
