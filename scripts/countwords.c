@@ -9,6 +9,7 @@ int main(void)
     int characters = 0;
     int words = 0;
     int lines = 0;
+  
     int inWord = 0;  
 
     while ((c = getchar()) != EOF)
