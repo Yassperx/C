@@ -14,8 +14,8 @@ int main(int argc, char *argv[]) {
         WINDOW_NAME,
         SDL_WINDOWPOS_UNDEFINED,
         SDL_WINDOWPOS_UNDEFINED,
-        HEIGHT,
         WIDTH,
+        HEIGHT,
         SDL_WINDOW_SHOWN
     );
 
