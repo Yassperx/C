@@ -2,7 +2,7 @@
 #include <SDL2/SDL.h>
 #define WIDTH 720
 #define HEIGHT 1080
-
+#define WINDOW_NAME "Hello, world"
 
 int main(int argc, char *argv[]) {
     if (SDL_Init(SDL_INIT_VIDEO) < 0) {
@@ -11,7 +11,7 @@ int main(int argc, char *argv[]) {
     }
 
     SDL_Window *window = SDL_CreateWindow(
-        "Hello, world !",
+        WINDOW_NAME,
         SDL_WINDOWPOS_UNDEFINED,
         SDL_WINDOWPOS_UNDEFINED,
         HEIGHT,

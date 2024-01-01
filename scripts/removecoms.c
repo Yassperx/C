@@ -17,7 +17,7 @@ int main(int argc, char *argv[])
   // Copy the filename from the command-line argument
   snprintf(filename, sizeof(filename), "%s", argv[1]);
 
-  FILE *target = fopen(filename, "r");
+  FILE *target = fopen(filename, "w");
 
   if (target == NULL)
   {
