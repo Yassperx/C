@@ -1,50 +1,58 @@
+// Calculate Fibonacci Numbers 
+// Public Domain
+// https://creativecommons.org/publicdomain/zero/1.0/
 #include <stdio.h>
 #include <stdlib.h>
+#include <gmp.h>
+#include <time.h>
 
-#define MAX 10000000
-long long memo[MAX];
-
-long long fib(int n)
-{
-    if (n == 0)
-    {
-        return 0;
-    }
-    else if (n == 1)
-    {
-        return 1;
-    }
-    else if (memo[n] != -1)
-    {
-        return memo[n];
-    }
-
-    memo[n] = fib(n - 1) + fib(n - 2);
-    return memo[n];
-}
+long limit, i = 0;
 
 int main(int argc, char *argv[])
 {
-    if (argc != 2)
-    {
-        printf("Usage: %s <n>\n", argv[0]);
-        return 1;
-    }
+	// Get User Input 
+	if (argc != 2)
+	{
+		printf("Improper input. Exiting.\n");
+		return -1; 
+	}
 
-    int n = atoi(argv[1]);
+	limit = strtol(argv[1], NULL, 10);
 
-    if (n < 0)
-    {
-        printf("n < 0\n");
-        return 1;
-    }
+	// Setup GMP 
+	mpz_t a, b, c;
+	mpz_init_set_ui(a, 1);
+    mpz_init_set_ui(b, 0);
+   	mpz_init(c);
 
-    for (int i = 0; i < MAX; i++)
-    {
-        memo[i] = -1;
-    }
+    // Start timing 
+    clock_t start_time = clock();
 
-    printf("%lld\n", fib(n));
+   	for (i = 0; i < limit; i++)
+   	{
+   		// Perform the Fibonacci Calculation
+   		mpz_add(c, a, b);
+   		mpz_set(a, b);
+   		mpz_set(b, c);
+   	}
 
-    return 0;
+    // End timing 
+    clock_t end_time = clock(); 
+
+	// Print the results to stdout
+   	printf("Fibonacci Number %ld: ", i);
+   	mpz_out_str(stdout, 10, b);
+   	printf("\n");
+
+	// Cleanup
+   	mpz_clear(a);
+   	mpz_clear(b);
+   	mpz_clear(c);
+
+    // Print time taaken 
+    double time_taken = ((double) end_time - start_time)  / CLOCKS_PER_SEC;
+    printf("Calculation Time: %f seconds\n", time_taken);
+	
+	
+	return 0;
 }
